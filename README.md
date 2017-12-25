@@ -1,37 +1,47 @@
-## Welcome to GitHub Pages
+### webAdder
 
-You can use the [editor on GitHub](https://github.com/faisalnoufal/webadder/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+    <form class="container" action="https://formspree.io/faisalnoufal@gmail.com" method="post">
+        <p class="h4 text-center mb-4">Write to us</p>
 
-### Markdown
+        <div class="md-form">
+            <i class="fa fa-user prefix grey-text"></i>
+            <input type="text" id="form3" class="form-control" name="Name">
+            <label for="form3"></label>
+        </div>
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+        <div class="md-form">
+            <div class="row">
+                <div class="col">
+                    <i class="fa fa-envelope prefix grey-text"></i>
+                    <input type="email" id="form2" class="form-control validate" name="_replyto">
+                    <label for="form2"></label>
+                </div>
+                <div class="col">
+                    <i class="fa fa-phone prefix grey-text"></i>
+                    <input type="number" id="form32" class="form-control validate" name="Phone">
+                    <label for="form34"></label>
+                </div>
+            </div>
 
-```markdown
-Syntax highlighted code block
 
-# Header 1
-## Header 2
-### Header 3
+            <div class="md-form">
+                <i class="fa fa-pencil prefix grey-text"></i>
+                <textarea type="text" id="form8" class="md-textarea" style="height: 100px" name="Message"></textarea>
+                <label for="form8"></label>
+            </div>
+        </div>
 
-- Bulleted
-- List
+        <div class="text-center">
+            <!--        <input type="submit" value="Send">-->
+            <button class="btn btn-unique">Send <i class="fa fa-paper-plane-o ml-1"></i></button>
+        </div>
 
-1. Numbered
-2. List
 
-**Bold** and _Italic_ and `Code` text
+        <input type="hidden" name="_next" value="http://www.skiddydrive.com" />
+        <input type="hidden" name="_subject" value="New lead from SkiddyDrive!" />
+        <input type="hidden" name="_cc" value="smibin.km@gmail.com" />
+        <input type="hidden" name="_format" value="plain" />
 
-[Link](url) and ![Image](src)
-```
+    </form>
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/faisalnoufal/webadder/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
