@@ -40,7 +40,7 @@
 
         <input type="hidden" name="_next" value="http://www.skiddydrive.com" />
         <input type="hidden" name="_subject" value="New lead from SkiddyDrive!" />
-        <input type="hidden" name="_cc" value="smibin.km@gmail.com" />
+        
         <input type="hidden" name="_format" value="plain" />
 
     </form>
