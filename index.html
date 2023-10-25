@@ -70,7 +70,57 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.3/js/mdb.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/faisalnoufal/webadder/webadder.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/gh/faisalnoufal/webadder/webadder.min.js"></script> -->
+
+    <script>
+      function webadder() {
+        let e = document.createElement("a");
+        let o = document.createTextNode("webAdder");
+        e.appendChild(o);
+        e.href = "https://webadder.com";
+        e.target = "_blank";
+        e.title = "Design, Develop and Deploy";
+        e.style.cssText =
+          "z-index: 2; color: white; position: fixed; text-decoration: none; font-family: Raleway, sans-serif; font-size: 10px; bottom: -40px; right: 0; background-image: linear-gradient( to right, #9966ff 0%, #3399ff 51%, #669999 100% ); border-radius: 3px 0 0 0; padding: 0 2px";
+        document.body.appendChild(e);
+
+        e.onmouseover = function () {
+          e.style.color = "black";
+        };
+
+        e.onmouseout = function () {
+          e.style.color = "white";
+        };
+
+        // Animate the pop-up effect
+        let bottomValue = -40;
+        let interval = setInterval(function () {
+          bottomValue += 1;
+          e.style.bottom = bottomValue + "px";
+          if (bottomValue >= 0) {
+            clearInterval(interval);
+            // Remove the element after 15 seconds
+            setTimeout(function () {
+              e.style.display = "none";
+              // Schedule the next webadder() call after 15 seconds
+              setTimeout(function () {
+                e.style.display = "block";
+                // Remove the element again after 15 seconds
+                setTimeout(function () {
+                  e.style.display = "none";
+                  // Schedule the next webadder() call after 30 seconds
+                  setTimeout(webadder, 30000);
+                }, 15000);
+              }, 15000);
+            }, 15000);
+          }
+        }, 10);
+      }
+
+      // Call the webadder function to start the process
+      webadder();
+    </script>
+
     <!-- <script src="webadder.min.js"></script> -->
   </body>
 </html>
