@@ -1,0 +1,154 @@
+/*!
+ * Material Design for Bootstrap 4
+ * Version: MDB FREE 4.4.3
+ *
+ *
+ * Copyright: Material Design for Bootstrap
+ * https://mdbootstrap.com/
+ *
+ * Read the license: https://mdbootstrap.com/license/
+ *
+ *
+ * Documentation: https://mdbootstrap.com/
+ *
+ * Getting started: https://mdbootstrap.com/getting-started/
+ *
+ * Tutorials: https://mdbootstrap.com/bootstrap-tutorial/
+ *
+ * Templates: https://mdbootstrap.com/templates/
+ *
+ * Support: https://mdbootstrap.com/support/
+ *
+ * Contact: office@mdbootstrap.com 
+ *
+ * Atribution: Animate CSS, Twitter Bootstrap, Materialize CSS, Normalize CSS, Waves JS, WOW JS, Toastr, Chart.js , Hammer.js
+ *
+ */
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+@-webkit-keyframes slideInUp {
+  from {
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+    visibility: visible;
+  }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes slideInUp {
+  from {
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+    visibility: visible;
+  }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+.slideInUp {
+  -webkit-animation-name: slideInUp;
+  animation-name: slideInUp;
+}
+.mb-1 {
+  margin-bottom: 0.25rem !important;
+}
+.flex-center {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+}
+.flex-center p {
+  margin: 0;
+}
+body,
+h1,
+h5 {
+  font-weight: 300;
+}
+@font-face {
+  font-family: Roboto;
+  src: local(Roboto Thin), url(../font/roboto/Roboto-Thin.eot);
+  src: url(../font/roboto/Roboto-Thin.eot?#iefix) format("embedded-opentype"),
+    url(../font/roboto/Roboto-Thin.woff2) format("woff2"),
+    url(../font/roboto/Roboto-Thin.woff) format("woff"),
+    url(../font/roboto/Roboto-Thin.ttf) format("truetype");
+  font-weight: 200;
+}
+@font-face {
+  font-family: Roboto;
+  src: local(Roboto Light), url(../font/roboto/Roboto-Light.eot);
+  src: url(../font/roboto/Roboto-Light.eot?#iefix) format("embedded-opentype"),
+    url(../font/roboto/Roboto-Light.woff2) format("woff2"),
+    url(../font/roboto/Roboto-Light.woff) format("woff"),
+    url(../font/roboto/Roboto-Light.ttf) format("truetype");
+  font-weight: 300;
+}
+@font-face {
+  font-family: Roboto;
+  src: local(Roboto Regular), url(../font/roboto/Roboto-Regular.eot);
+  src: url(../font/roboto/Roboto-Regular.eot?#iefix) format("embedded-opentype"),
+    url(../font/roboto/Roboto-Regular.woff2) format("woff2"),
+    url(../font/roboto/Roboto-Regular.woff) format("woff"),
+    url(../font/roboto/Roboto-Regular.ttf) format("truetype");
+  font-weight: 400;
+}
+@font-face {
+  font-family: Roboto;
+  src: url(../font/roboto/Roboto-Medium.eot);
+  src: url(../font/roboto/Roboto-Medium.eot?#iefix) format("embedded-opentype"),
+    url(../font/roboto/Roboto-Medium.woff2) format("woff2"),
+    url(../font/roboto/Roboto-Medium.woff) format("woff"),
+    url(../font/roboto/Roboto-Medium.ttf) format("truetype");
+  font-weight: 500;
+}
+@font-face {
+  font-family: Roboto;
+  src: url(../font/roboto/Roboto-Bold.eot);
+  src: url(../font/roboto/Roboto-Bold.eot?#iefix) format("embedded-opentype"),
+    url(../font/roboto/Roboto-Bold.woff2) format("woff2"),
+    url(../font/roboto/Roboto-Bold.woff) format("woff"),
+    url(../font/roboto/Roboto-Bold.ttf) format("truetype");
+  font-weight: 700;
+}
+body {
+  font-family: Roboto, sans-serif;
+}
+@supports (transform-style: preserve-3d) {
+}
