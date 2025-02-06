@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ollama Cheat Sheet</title>
+    <style>
+      /* Global styles */
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #181818;
+        color: #e1e1e1;
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+      }
+
+      h1,
+      h2 {
+        color: #00b8d9; /* ChatGPT blue */
+        margin-bottom: 10px;
+      }
+
+      h1 {
+        padding: 30px;
+        text-align: center;
+        background-color: #20232a;
+        margin: 0;
+        font-size: 2em;
+      }
+
+      h2 {
+        padding-top: 30px;
+        margin-top: 30px;
+        border-top: 1px solid #333;
+      }
+
+      /* Container for content */
+      .container {
+        width: 80%;
+        max-width: 1200px;
+        margin: 40px auto;
+        background-color: #1e1e1e;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+      }
+
+      /* Code styling */
+      pre {
+        background-color: #333;
+        padding: 15px;
+        border-radius: 5px;
+        overflow-x: auto;
+        font-family: "Courier New", Courier, monospace;
+        border: 1px solid #444;
+        color: #dcdcdc;
+        width: calc(100% - 30px); /* Adjusted width to respect padding */
+        margin: 0; /* Remove default margin */
+      }
+
+      code {
+        background-color: #333;
+        padding: 5px 8px;
+        border-radius: 4px;
+        color: #00b8d9;
+      }
+
+      ol,
+      ul {
+        margin-left: 40px;
+        margin-bottom: 20px;
+      }
+
+      ul li {
+        margin-bottom: 12px;
+      }
+
+      p,
+      ul,
+      ol {
+        font-size: 1.1em;
+      }
+
+      a {
+        color: #00b8d9;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .footer {
+        text-align: center;
+        font-size: 0.9em;
+        color: #888;
+        margin-top: 40px;
+      }
+
+      .note {
+        background-color: #353535;
+        padding: 10px;
+        border-radius: 5px;
+        color: #ffcc00;
+      }
+
+      .note strong {
+        color: #fff;
+      }
+
+      /* Accessibility improvements */
+      a:focus {
+        outline: 2px solid #00b8d9;
+        outline-offset: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Ollama Cheat Sheet</h1>
+
+      <h2>1. Installation</h2>
+      <h3>Install Ollama</h3>
+      <pre><code>pip install ollama</code></pre>
+
+      <h3>Verify Installation</h3>
+      <pre><code>ollama --version</code></pre>
+
+      <h2>2. Authentication</h2>
+      <h3>Set API Key</h3>
+      <pre><code>import os
+os.environ['OLLAMA_API_KEY'] = 'your_api_key_here'</code></pre>
+
+      <h3>Use Google Colab Secrets (Recommended)</h3>
+      <pre><code>from google.colab import userdata
+api_key = userdata.get('OLLAMA_API_KEY')</code></pre>
+
+      <h2>3. Basic Usage</h2>
+      <h3>Initialize Ollama</h3>
+      <pre><code>import ollama
+client = ollama.Client()</code></pre>
+
+      <h3>Chat with a Model</h3>
+      <pre><code>response = ollama.chat(
+    model="deepseek_model",  # Replace with your model name
+    message="Your query here"
+)
+print(response)</code></pre>
+
+      <h3>List Available Models</h3>
+      <pre><code>models = ollama.list_models()
+print(models)</code></pre>
+
+      <h2>4. Advanced Usage</h2>
+      <h3>Customize Model Parameters</h3>
+      <pre><code>response = ollama.chat(
+    model="deepseek_model",
+    message="Your query here",
+    temperature=0.7,  # Adjust creativity (0 to 1)
+    max_tokens=100    # Limit response length
+)</code></pre>
+
+      <h3>Stream Responses</h3>
+      <pre><code>for chunk in ollama.chat(
+    model="deepseek_model",
+    message="Your query here",
+    stream=True
+):
+    print(chunk['message'], end="")</code></pre>
+
+      <h2>5. Troubleshooting</h2>
+      <h3>Common Errors</h3>
+      <ul>
+        <li>
+          <strong>Missing API Key</strong>: Ensure the API key is set correctly.
+          <pre><code>os.environ['OLLAMA_API_KEY'] = 'your_api_key_here'</code></pre>
+        </li>
+        <li>
+          <strong>Model Not Found</strong>: Verify the model name is correct.
+          <pre><code>models = ollama.list_models()
+print(models)</code></pre>
+        </li>
+      </ul>
+
+      <h3>Debugging</h3>
+      <pre><code>import logging
+logging.basicConfig(level=logging.DEBUG)</code></pre>
+
+      <h2>6. Useful Commands</h2>
+      <h3>Update Ollama</h3>
+      <pre><code>pip install --upgrade ollama</code></pre>
+
+      <h3>Uninstall Ollama</h3>
+      <pre><code>pip uninstall ollama</code></pre>
+
+      <h2>7. Example Workflow</h2>
+      <h3>Full Example in Python</h3>
+      <pre><code>import ollama
+
+# Set API Key
+import os
+os.environ['OLLAMA_API_KEY'] = 'your_api_key_here'
+
+# Initialize Ollama
+client = ollama.Client()
+
+# Chat with a model
+response = ollama.chat(
+    model="deepseek_model",
+    message="Explain quantum computing in simple terms."
+)
+
+# Print the response
+print(response)</code></pre>
+
+      <h2>8. Additional Resources</h2>
+      <ul>
+        <li>
+          <strong>Ollama Documentation:</strong>
+          <a href="https://ollama.ai/docs" target="_blank"
+            >https://ollama.ai/docs</a
+          >
+        </li>
+        <li>
+          <strong>Google Colab Guide:</strong>
+          <a href="https://colab.research.google.com" target="_blank"
+            >https://colab.research.google.com</a
+          >
+        </li>
+      </ul>
+    </div>
+    <script>
+      function webadder() {
+        let e = document.createElement("a");
+        let o = document.createTextNode("webAdder");
+        e.appendChild(o);
+        e.href = "https://webadder.com";
+        e.target = "_blank";
+        e.title = "Design, Develop and Deploy";
+        e.style.cssText =
+          "z-index: 2; color: white; position: fixed; text-decoration: none; font-family: Raleway, sans-serif; font-size: 10px; bottom: -40px; right: 0; background-image: linear-gradient( to right, #9966ff 0%, #3399ff 51%, #669999 100% ); border-radius: 3px 0 0 0; padding: 0 2px";
+        document.body.appendChild(e);
+
+        e.onmouseover = function () {
+          e.style.color = "black";
+        };
+
+        e.onmouseout = function () {
+          e.style.color = "white";
+        };
+
+        // Animate the pop-up effect
+        let bottomValue = -40;
+        let interval = setInterval(function () {
+          bottomValue += 1;
+          e.style.bottom = bottomValue + "px";
+          if (bottomValue >= 0) {
+            clearInterval(interval);
+            // Remove the element after 15 seconds
+            setTimeout(function () {
+              e.style.display = "none";
+              // Schedule the next webadder() call after 15 seconds
+              setTimeout(function () {
+                e.style.display = "block";
+                // Remove the element again after 15 seconds
+                setTimeout(function () {
+                  e.style.display = "none";
+                  // Schedule the next webadder() call after 30 seconds
+                  setTimeout(webadder, 30000);
+                }, 15000);
+              }, 15000);
+            }, 15000);
+          }
+        }, 10);
+      }
+
+      // Call the webadder function to start the process
+      webadder();
+    </script>
+  </body>
+</html>

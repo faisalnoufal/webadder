@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Setting up Ollama DeepSeek in Google Colab</title>
+    <style>
+      /* Global styles */
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #181818;
+        color: #e1e1e1;
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+      }
+
+      h1,
+      h2 {
+        color: #00b8d9; /* DeepSeek blue */
+        margin-bottom: 10px;
+      }
+
+      h1 {
+        padding: 30px;
+        text-align: center;
+        background-color: #20232a;
+        margin: 0;
+        font-size: 2em;
+      }
+
+      h2 {
+        padding-top: 30px;
+        margin-top: 30px;
+        border-top: 1px solid #333;
+      }
+
+      /* Container for content */
+      .container {
+        width: 80%;
+        max-width: 1200px;
+        margin: 40px auto;
+        background-color: #1e1e1e;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+      }
+
+      /* Code styling */
+      pre {
+        background-color: #333;
+        padding: 15px;
+        border-radius: 5px;
+        overflow-x: auto;
+        font-family: "Courier New", Courier, monospace;
+        border: 1px solid #444;
+        color: #dcdcdc;
+        width: calc(100% - 30px); /* Adjusted width to respect padding */
+        margin: 0; /* Remove default margin */
+      }
+
+      code {
+        background-color: #333;
+        padding: 5px 8px;
+        border-radius: 4px;
+        color: #00b8d9;
+      }
+
+      ol,
+      ul {
+        margin-left: 40px;
+        margin-bottom: 20px;
+      }
+
+      ul li {
+        margin-bottom: 12px;
+      }
+
+      p,
+      ul,
+      ol {
+        font-size: 1.1em;
+      }
+
+      a {
+        color: #00b8d9;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .footer {
+        text-align: center;
+        font-size: 0.9em;
+        color: #888;
+        margin-top: 40px;
+      }
+
+      .note {
+        background-color: #353535;
+        padding: 10px;
+        border-radius: 5px;
+        color: #ffcc00;
+      }
+
+      .note strong {
+        color: #fff;
+      }
+
+      /* Accessibility improvements */
+      a:focus {
+        outline: 2px solid #00b8d9;
+        outline-offset: 2px;
+      }
+
+      /* Animation for webAdder */
+      @keyframes slideUp {
+        0% {
+          bottom: -40px;
+        }
+        100% {
+          bottom: 0;
+        }
+      }
+
+      .webadder {
+        position: fixed;
+        bottom: -40px;
+        right: 0;
+        background-image: linear-gradient(
+          to right,
+          #9966ff 0%,
+          #3399ff 51%,
+          #669999 100%
+        );
+        border-radius: 3px 0 0 0;
+        padding: 5px 10px;
+        color: white;
+        font-family: Raleway, sans-serif;
+        font-size: 10px;
+        text-decoration: none;
+        z-index: 2;
+        animation: slideUp 0.5s ease-out forwards;
+      }
+
+      .webadder:hover {
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>How to Set Up Ollama DeepSeek in Google Colab</h1>
+
+      <h2>Step 1: Set up the Environment in Google Colab</h2>
+      <ol>
+        <li>
+          <strong>Open a new Colab notebook:</strong><br />
+          - Go to
+          <a href="https://colab.research.google.com/" target="_blank"
+            >Google Colab</a
+          >
+          and create a new notebook.
+        </li>
+        <li>
+          <strong>Install required dependencies:</strong><br />
+          You may need to install packages to access the API or use the Ollama
+          DeepSeek functionality. Run the following command in the first code
+          cell in Colab:
+          <pre><code>!pip install ollama</code></pre>
+          <p class="note">
+            <strong>Note:</strong> You might need to check for any additional
+            dependencies or configurations specific to your version of DeepSeek
+            or Ollama. Usually, the documentation will specify any dependencies.
+          </p>
+        </li>
+      </ol>
+
+      <h2>Step 2: Set up API Keys or Authentication (if required)</h2>
+      <p>
+        If <strong>Ollama DeepSeek</strong> requires an API key or some form of
+        authentication, make sure to:
+      </p>
+      <ul>
+        <li>
+          Obtain your API key from the Ollama platform (or wherever the service
+          is provided).
+        </li>
+        <li>
+          Use Google Colab's <strong>secrets manager</strong> to securely store
+          and access your API key.
+        </li>
+      </ul>
+      <p>For example:</p>
+      <pre><code>from google.colab import userdata
+api_key = userdata.get('OLLAMA_API_KEY')</code></pre>
+      <p>
+        Replace <code>'OLLAMA_API_KEY'</code> with the name of your secret key
+        stored in Colab.
+      </p>
+
+      <h2>Step 3: Use the Ollama DeepSeek Functionality</h2>
+      <p>
+        Once the environment is set up and any necessary keys are configured,
+        you should be able to use <strong>DeepSeek</strong> in your Colab
+        notebook.
+      </p>
+      <p>Example code to use DeepSeek:</p>
+      <pre><code>import ollama
+
+# Initialize the DeepSeek model or API call here
+response = ollama.chat(model="deepseek_model", message="Your query here")
+
+print(response)</code></pre>
+      <p>
+        Replace <code>"deepseek_model"</code> and
+        <code>"Your query here"</code> with your relevant DeepSeek model name
+        and query.
+      </p>
+
+      <h2>Step 4: Test and Troubleshoot</h2>
+      <p>
+        Run your code cell, and you should be able to see the output of your
+        query or task. If any errors pop up, make sure that:
+      </p>
+      <ul>
+        <li>You have installed all necessary dependencies.</li>
+        <li>Your API keys are correctly configured.</li>
+        <li>
+          You are using the correct model names and inputs according to the
+          Ollama DeepSeek documentation.
+        </li>
+      </ul>
+
+      <h2>Additional Resources</h2>
+      <ul>
+        <li>
+          <strong>Ollama Documentation:</strong> Check out Ollama's official
+          docs to find more detailed instructions about using DeepSeek.
+        </li>
+        <li>
+          <strong>Google Colab Documentation:</strong> If you need more details
+          on running Python code or installing packages in Colab, refer to
+          <a
+            href="https://colab.research.google.com/notebooks/intro.ipynb"
+            target="_blank"
+            >Google Colab's help documentation</a
+          >.
+        </li>
+      </ul>
+    </div>
+
+    <script>
+      function webadder() {
+        let e = document.createElement("a");
+        let o = document.createTextNode("webAdder");
+        e.appendChild(o);
+        e.href = "https://webadder.com";
+        e.target = "_blank";
+        e.title = "Design, Develop and Deploy";
+        e.style.cssText =
+          "z-index: 2; color: white; position: fixed; text-decoration: none; font-family: Raleway, sans-serif; font-size: 10px; bottom: -40px; right: 0; background-image: linear-gradient( to right, #9966ff 0%, #3399ff 51%, #669999 100% ); border-radius: 3px 0 0 0; padding: 0 2px";
+        document.body.appendChild(e);
+
+        e.onmouseover = function () {
+          e.style.color = "black";
+        };
+
+        e.onmouseout = function () {
+          e.style.color = "white";
+        };
+
+        // Animate the pop-up effect
+        let bottomValue = -40;
+        let interval = setInterval(function () {
+          bottomValue += 1;
+          e.style.bottom = bottomValue + "px";
+          if (bottomValue >= 0) {
+            clearInterval(interval);
+            // Remove the element after 15 seconds
+            setTimeout(function () {
+              e.style.display = "none";
+              // Schedule the next webadder() call after 15 seconds
+              setTimeout(function () {
+                e.style.display = "block";
+                // Remove the element again after 15 seconds
+                setTimeout(function () {
+                  e.style.display = "none";
+                  // Schedule the next webadder() call after 30 seconds
+                  setTimeout(webadder, 30000);
+                }, 15000);
+              }, 15000);
+            }, 15000);
+          }
+        }, 10);
+      }
+
+      // Call the webadder function to start the process
+      webadder();
+    </script>
+  </body>
+</html>

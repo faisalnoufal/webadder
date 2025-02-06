@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>webAdder | Design, Develop &amp; Deploys</title>
+    <title>webAdder | Design, Develop &amp; Deploy</title>
     <meta name="author" content="Fariza Faisal" />
     <meta
       name="description"
@@ -30,27 +30,208 @@
       gtag("js", new Date());
       gtag("config", "UA-111833453-1");
     </script>
+
+    <style>
+      /* Global styles */
+      body {
+        margin: 0;
+        font-family: "Raleway", sans-serif; /* Reverted to original font */
+        background-color: #000;
+        color: #e1e1e1;
+      }
+
+      /* Hero section */
+      .hero {
+        height: 100vh;
+        background: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero img {
+        height: 200px;
+        width: 142.84px;
+        animation: fadeIn 1s ease-in-out;
+      }
+
+      .hero h1 {
+        font-size: 2.5em;
+        color: white;
+        text-transform: uppercase;
+        animation: fadeIn 1s ease-in-out;
+      }
+
+      .hero h5 {
+        font-size: 1.2em;
+        color: #888;
+        animation: slideInUp 1s ease-in-out;
+      }
+
+      .hero p {
+        font-size: 1em;
+        color: #888;
+        animation: fadeIn 1s ease-in-out;
+      }
+
+      /* Cards section */
+      .cards-section {
+        padding: 80px 20px;
+        background: #181818;
+      }
+
+      .cards-container {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        flex-wrap: wrap;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .card {
+        background: #1e1e1e;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+        width: 300px;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        position: relative;
+      }
+
+      .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+      }
+
+      .card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg, #00b8d9, #9966ff);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .card:hover::before {
+        opacity: 0.2;
+      }
+
+      .card img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+      }
+
+      .card-content {
+        padding: 20px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .card h3 {
+        color: #00b8d9;
+        margin-bottom: 10px;
+        font-size: 1.5em;
+      }
+
+      .card p {
+        color: #e1e1e1;
+        font-size: 1em;
+        line-height: 1.6;
+      }
+
+      .card a {
+        display: inline-block;
+        margin-top: 15px;
+        padding: 10px 20px;
+        background: #00b8d9;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background 0.3s ease;
+      }
+
+      .card a:hover {
+        background: #0099b8;
+      }
+
+      /* Animations */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideInUp {
+        from {
+          transform: translateY(20px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+    </style>
   </head>
   <body>
-    <div style="height: 100vh; background: black">
-      <div class="flex-center flex-column">
-        <img
-          class="animated fadeIn"
-          src="W.svg"
-          alt="webAdder"
-          height="200px"
-          width="142.84px"
-        />
-        <h1 class="animated fadeIn mb-1 text-uppercase text-white text-center">
-          Design, Develop & Deploy!
-        </h1>
-        <h5 class="animated slideInUp fadeIn mb-1 text-muted">made easy...</h5>
-        <p class="animated fadeIn text-muted">webAdder</p>
+    <!-- Hero Section -->
+    <div class="hero">
+      <img src="W.svg" alt="webAdder" />
+      <h1>Design, Develop & Deploy!</h1>
+      <h5>made easy...</h5>
+      <p>webAdder</p>
+    </div>
+
+    <!-- Cards Section -->
+    <div class="cards-section">
+      <div class="cards-container">
+        <!-- Card 1: Ollama DeepSeek Setup Guide -->
+        <div class="card">
+          <img
+            src="/Technology/img/Ollama-Deepseek-Setup-in-Colab.jpeg"
+            alt="Ollama DeepSeek Setup"
+          />
+          <div class="card-content">
+            <h3>Ollama DeepSeek Setup in Google Colab</h3>
+            <p>Step-by-step guide to set up Ollama DeepSeek in Google Colab.</p>
+            <a
+              href="Technology/ollama-deepseek-setup-in-Google-Colab.html"
+              target="_blank"
+              >View Guide</a
+            >
+          </div>
+        </div>
+
+        <!-- Card 2: Ollama Cheat Sheet -->
+        <div class="card">
+          <img
+            src="/Technology/img/Ollama-Cheatsheet.jpeg"
+            alt="Ollama Cheat Sheet"
+          />
+          <div class="card-content">
+            <h3>Ollama Cheat Sheet</h3>
+            <p>Quick reference guide for Ollama commands, setup, and usage.</p>
+            <a href="Technology/ollama-cheat-sheet.html" target="_blank"
+              >View Cheat Sheet</a
+            >
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- <script src="https://cdn.jsdelivr.net/gh/faisalnoufal/webadder/webadder.min.js"></script> -->
-
+    <!-- WebAdder Link -->
     <script>
       function webadder() {
         let e = document.createElement("a");
@@ -99,7 +280,5 @@
       // Call the webadder function to start the process
       webadder();
     </script>
-
-    <!-- <script src="webadder.min.js"></script> -->
   </body>
 </html>
