@@ -203,9 +203,129 @@
       svg rect:nth-child(4) {
         animation: moveUpDown 4s infinite ease-in-out 2s;
       }
+
+      /* Thumbnail gallery styles */
+      .thumbnail-gallery {
+        margin-top: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .thumbnail {
+        position: relative;
+        width: 160px;
+        height: 90px;
+        border-radius: 10px;
+        overflow: hidden;
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .thumbnail:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+      }
+
+      .thumbnail img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .thumbnail .play-icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 40px;
+        height: 40px;
+        background-color: rgba(0, 0, 0, 0.6);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .thumbnail:hover .play-icon {
+        opacity: 1;
+      }
+
+      .thumbnail .play-icon::after {
+        content: '▶';
+        font-size: 20px;
+        color: white;
+      }
+
+      /* Charity links bar styles */
+      .charity-links {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+        padding: 15px 0;
+        text-align: center;
+        z-index: 1001;
+        border-bottom: 2px solid #00b8d9;
+        box-shadow: 0 2px 10px rgba(0, 184, 217, 0.3);
+      }
+
+      .charity-links a {
+        color: #00b8d9;
+        text-decoration: none;
+        margin: 0 20px;
+        font-size: 1.1em;
+        font-weight: 500;
+        padding: 8px 16px;
+        border-radius: 20px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .charity-links a:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 184, 217, 0.1);
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.3s ease;
+        z-index: -1;
+        border-radius: 20px;
+      }
+
+      .charity-links a:hover {
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 10px rgba(0, 184, 217, 0.4);
+      }
+
+      .charity-links a:hover:before {
+        transform: scaleX(1);
+        transform-origin: left;
+      }
+
+      .charity-links a:active {
+        transform: translateY(0);
+      }
     </style>
   </head>
   <body>
+    <!-- Charity Links Bar -->
+    <div class="charity-links">
+      <a href="https://oneummah.org.uk/appeals/gaza-emergency-appeal" target="_blank">❤️ One Ummah - Gaza Appeal</a>
+      <a href="https://matwproject.org/crisis-and-emergencies/palestine" target="_blank">❤️ MATW - Palestine Appeal</a>
+    </div>
+
     <!-- Hero Section -->
     <div class="hero">
       <!-- Free Palestine Image -->
@@ -255,6 +375,12 @@
       <h1>Design, Develop & Deploy!</h1>
       <h5>made easy...</h5>
       <p>webAdder</p>
+      <div class="thumbnail-gallery">
+        <div class="thumbnail" data-video-id="bc1zR6xg9LE">
+          <img src="https://img.youtube.com/vi/bc1zR6xg9LE/mqdefault.jpg" alt="Video Thumbnail 1">
+          <div class="play-icon"></div>
+        </div>
+      </div>
     </div>
 
     <!-- WebAdder Link -->
@@ -305,6 +431,52 @@
 
       // Call the webadder function to start the process
       webadder();
+    </script>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-button" id="lightbox-close-btn">&times;</span>
+        <div class="video-container" id="lightbox-video-container">
+          <!-- YouTube video will be embedded here -->
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Lightbox script
+      const lightboxModal = document.getElementById("lightbox-modal");
+      const thumbnails = document.querySelectorAll(".thumbnail");
+      const lightboxCloseBtn = document.getElementById("lightbox-close-btn");
+      const lightboxVideoContainer = document.getElementById("lightbox-video-container");
+
+      thumbnails.forEach(thumbnail => {
+        thumbnail.onclick = function () {
+          const videoId = this.getAttribute("data-video-id");
+          lightboxVideoContainer.innerHTML = `
+            <iframe
+              src="https://www.youtube.com/embed/${videoId}?autoplay=1"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          `;
+          lightboxModal.style.display = "block";
+        };
+      });
+
+      lightboxCloseBtn.onclick = function () {
+        lightboxModal.style.display = "none";
+        lightboxVideoContainer.innerHTML = "";
+      };
+
+      window.onclick = function (event) {
+        if (event.target == lightboxModal) {
+          lightboxModal.style.display = "none";
+          lightboxVideoContainer.innerHTML = "";
+        }
+      };
     </script>
   </body>
 </html>
